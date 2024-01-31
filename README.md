@@ -1,15 +1,19 @@
 # Building a SOC + Honeynet in Azure (Live Traffic)
-![Cloud Honeynet / SOC](https://i.imgur.com/ZWxe03e.jpg)
+![image](https://github.com/VincentlBrooks/SEC-Analyst/assets/158189609/bbfb4c51-4492-48ab-b78d-81ce1abf0960)
+
+
+
+
 
 ## Introduction
 
-In this project, I build a mini honeynet in Azure and ingest log sources from various resources into a Log Analytics workspace, which is then used by Microsoft Sentinel to build attack maps, trigger alerts, and create incidents. I measured some security metrics in the insecure environment for 24 hours, apply some security controls to harden the environment, measure metrics for another 24 hours, then show the results below. The metrics we will show are:
+In this project, a mini honeynet was developed within Azure, integrating log sources from diverse resources into a Log Analytics workspace. This setup feeds into Microsoft Sentinel, enabling the construction of attack maps, activation of alerts, and generation of incidents. Over an initial 24-hour period, key security metrics were monitored in an unsecured environment. Following the application of various security controls to enhance the environment's robustness, these metrics were recorded again for another 24 hours. The comparative results are presented below, focusing on several critical metrics:
 
-- SecurityEvent (Windows Event Logs)
-- Syslog (Linux Event Logs)
-- SecurityAlert (Log Analytics Alerts Triggered)
-- SecurityIncident (Incidents created by Sentinel)
-- AzureNetworkAnalytics_CL (Malicious Flows allowed into our honeynet)
+SecurityEvent: Capturing Windows Event Logs.
+Syslog: Documenting Linux Event Logs.
+SecurityAlert: Tracking alerts triggered in Log Analytics.
+SecurityIncident: Detailing incidents created by Sentinel.
+AzureNetworkAnalytics_CL: Analyzing malicious network flows permitted into the honeynet.
 
 ## Architecture Before Hardening / Security Controls
 ![Architecture Diagram](https://i.imgur.com/aBDwnKb.jpg)
@@ -44,7 +48,7 @@ Stop Time 2023-03-16 17:04:29
 
 | Metric                   | Count
 | ------------------------ | -----
-| SecurityEvent            | 19470
+| SecurityEvent            | 20470
 | Syslog                   | 3028
 | SecurityAlert            | 10
 | SecurityIncident         | 348
@@ -57,12 +61,12 @@ Stop Time 2023-03-16 17:04:29
 ## Metrics After Hardening / Security Controls
 
 The following table shows the metrics we measured in our environment for another 24 hours, but after we have applied security controls:
-Start Time 2023-03-18 15:37
-Stop Time	2023-03-19 15:37
+Start Time 2024-01-18 15:37
+Stop Time	2024-01-19 15:37
 
 | Metric                   | Count
 | ------------------------ | -----
-| SecurityEvent            | 8778
+| SecurityEvent            | 5693
 | Syslog                   | 25
 | SecurityAlert            | 0
 | SecurityIncident         | 0
@@ -70,6 +74,6 @@ Stop Time	2023-03-19 15:37
 
 ## Conclusion
 
-In this project, a mini honeynet was constructed in Microsoft Azure and log sources were integrated into a Log Analytics workspace. Microsoft Sentinel was employed to trigger alerts and create incidents based on the ingested logs. Additionally, metrics were measured in the insecure environment before security controls were applied, and then again after implementing security measures. It is noteworthy that the number of security events and incidents were drastically reduced after the security controls were applied, demonstrating their effectiveness.
+In this project, a mini honeynet was established within Microsoft Azure, with log sources seamlessly integrated into a Log Analytics workspace. Utilizing Microsoft Sentinel, the system was set to generate alerts and incidents in response to the incoming log data. A comparative analysis of security metrics was conducted before and after the implementation of enhanced security controls. The results clearly indicated a significant reduction in the number of security events and incidents post-implementation, underscoring the efficacy of these measures.
 
-It is worth noting that if the resources within the network were heavily utilized by regular users, it is likely that more security events and alerts may have been generated within the 24-hour period following the implementation of the security controls.
+It should be noted that under conditions of high resource utilization by regular network users, the likelihood of observing an increased volume of security events and alerts within the 24-hour window after applying the security controls could be higher.
